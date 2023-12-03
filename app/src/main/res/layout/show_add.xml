@@ -11,12 +11,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="Choose a Color for your Category"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_marginBottom="16dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/background_recycler"/>
 
     <LinearLayout
@@ -186,6 +189,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:text="Choose a Color for your Category"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -198,6 +203,8 @@
         android:id="@+id/editTextCategoryTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/background_recycler"
         android:hint="Enter Category Title"
@@ -213,12 +220,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
         android:text="Save"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:background="@drawable/background"
-        android:backgroundTint="@color/red"
-        android:textColor="@color/white"/>
+        android:textColor="#000000"/>
 
 
 
