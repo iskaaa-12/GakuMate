@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="blue1">#177E89</color>
-    <color name="purple_500">#084C61</color>
-    <color name="purple_700">#DB3A34</color>
-    <color name="teal_200">#FFC857</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="blue2">#084C61</color>
+    <color name="red">#DB3A34</color>
+    <color name="yellow">#FFC857</color>
+    <color name="blue3">#FF018786</color>
     <color name="ColorPrimary">#323031</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="defaultNote">#574E4E</color>
+    <color name="blueNote">#0D6068</color>
+    <color name="greenNote">#80D16E</color>
+    <color name="yellowNote">#D3A64A</color>
+    <color name="pinkNote">#FFD3D1</color>
+    <color name="redNote">#CD3631</color>
+    <color name="purpleNote">#807DC6</color>
+    <color name="orangeNote">#EC8C44</color>
+    <color name="indigoNote">#0E2087</color>note_color1.xml
 </resources>
