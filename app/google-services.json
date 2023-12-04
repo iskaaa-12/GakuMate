@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "188059492617",
+    "firebase_url": "https://gakumate-ca86b-default-rtdb.firebaseio.com",
+    "project_id": "gakumate-ca86b",
+    "storage_bucket": "gakumate-ca86b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188059492617:android:5d51e1ba945d1f2257b3d8",
+        "android_client_info": {
+          "package_name": "com.labactivity.gakumate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBIYUUNUfRrmNEv9tfc889QojTr2hDVF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188059492617:android:c677858771a6664657b3d8",
+        "android_client_info": {
+          "package_name": "com.labactivity.loginnsignup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBIYUUNUfRrmNEv9tfc889QojTr2hDVF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
