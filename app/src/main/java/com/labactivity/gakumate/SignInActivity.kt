@@ -1,4 +1,4 @@
-package com.labactivity.lastnatalaga
+package com.labactivity.gakumate
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -52,7 +52,7 @@ class SignInActivity : AppCompatActivity() {
             } else {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        val intent = Intent(this, AddCategory::class.java)
+                        val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()

@@ -1,7 +1,5 @@
 package com.labactivity.gakumate
 
-import com.labactivity.lastnatalaga.SignInActivity
-
 
 import android.content.Intent
 import android.net.Uri
@@ -159,7 +157,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun openSignIn() {
-        val intent = Intent(this, SignInActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 }

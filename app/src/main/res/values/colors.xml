@@ -7,6 +7,7 @@
     <color name="blue3">#FF018786</color>
     <color name="ColorPrimary">#323031</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
 
     <color name="defaultNote">#574E4E</color>
     <color name="blueNote">#0D6068</color>

@@ -11,32 +11,30 @@ import com.orhanobut.dialogplus.ViewHolder
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
+
         val add = binding.btnAdd
 
-        add.setOnClickListener{
+        add.setOnClickListener {
             val dialogBuilder = DialogPlus.newDialog(this)
                 .setContentHolder(ViewHolder(R.layout.show_add))
                 .setExpanded(false) // This is optional, set it as per your requirement
                 .create()
 
             // Show the dialog
-            dialogBuilder.show()        }
-
-        if(auth.currentUser == null){
-
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
+            dialogBuilder.show()
         }
 
-
-
-
-
+        if (auth.currentUser == null) {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+            finish() // Optional: Finish the current activity to prevent going back to it using the back button
+        }
     }
-
 }
