@@ -1,4 +1,57 @@
 <resources>
     <string name="app_name">GakuMate</string>
+    <string name="sign_in">Already Registered? , Sign In !</string>
+    <string name="sign_up">Create an Account?, Sign Up</string>
+    <string name="terms_conditions">I agree to the <u>Terms and Conditions</u></string>
+    <string name="terms"><b>Terms and Conditions for GakuMate\n</b>
 
+\nThese Terms and Conditions ("Terms") govern your use of GakuMate ("the App"). By using the App, you agree to these Terms. If you do not agree with these Terms, please do not use the App.\n
+
+\n<b>1. User Information and Data Privacy\n</b>
+
+\n1.1. Collection of Personal Information: The App may collect and process personal information, including but not limited to your email address and other details you provide during account creation, in accordance with the Data Privacy Act of 2012.\n
+
+\n1.2. Purpose of Data Processing: The personal information collected will be used for the purpose of providing and improving the services offered by the App, including task management features.\n
+
+\n<b>2. Data Security and Confidentiality\n</b>
+
+\n2.1. Security Measures: We implement reasonable and appropriate security measures to protect your personal information from unauthorized access, disclosure, alteration, and destruction, in compliance with data protection standards.\n
+
+\n2.2. Confidentiality: Your personal information will be treated with utmost confidentiality and will not be disclosed to third parties without your explicit consent, unless required by law.\n
+
+\n<b>3. User Consent and Control\n</b>
+
+\n3.1. Consent: By using the App, you explicitly consent to the collection, processing, and storage of your personal information as outlined in these Terms.
+
+\n3.2. User Control: You have the right to manage and control your personal information, including updating or deleting it from our records, in accordance with applicable data protection laws.\n
+
+\n<b>4. Third-Party Services and Data Sharing\n</b>
+
+\n4.1. Third-Party Services: We may use third-party services to assist in providing and improving our services. These services will adhere to data protection standards and will only have access to your personal information for the purpose of performing tasks on our behalf.\n
+
+\n4.2. Data Sharing: Your personal information will not be shared, sold, or leased to third parties for marketing purposes without your explicit consent.\n
+
+\n<b>5. Data Access and Correction\n</b>
+
+\n5.1. Access: You have the right to request access to your personal information held by the App and obtain information about how it is processed.\n
+
+\n5.2. Correction: You may request the correction of any inaccuracies in your personal information.\n
+
+\n<b>6. Changes to Terms\n</b>
+
+\n6.1. Notification: We will notify you of any material changes to these Terms, and your continued use of the App after such modifications constitutes your acceptance of the revised Terms.\n
+
+\n<b>7. Termination\n</b>
+
+\n7.1. Account Termination: You have the right to request the termination of your account, and we will promptly comply with such requests, ensuring the secure deletion of your personal information.\n
+
+\n<b>8. Governing Law and Compliance</b>
+
+\n8.1. Jurisdiction: These Terms are governed by and construed in accordance with the laws of [Your Jurisdiction], and we commit to complying with the Data Privacy Act of 2012 and other relevant data protection laws.\n
+
+\n<b>Contact Information\n</b>
+
+\nIf you have any questions or concerns about these Terms or the processing of your personal information, please contact us at 09915111868.\n
+
+\nBy using the App, you acknowledge that you have read, understood, and agree to these Terms in compliance with the Data Privacy Act of 2012.</string>
 </resources>
