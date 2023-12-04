@@ -18,4 +18,7 @@
     <color name="purpleNote">#807DC6</color>
     <color name="orangeNote">#EC8C44</color>
     <color name="indigoNote">#0E2087</color>note_color1.xml
+
+    <color name="checkbg">#ABC2D5</color>
+    <color name="bg">#D8C3C3</color>
 </resources>
