@@ -3,5 +3,6 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/chela_one</item>
         <item>@font/graduate</item>
+        <item>@font/paprika</item>
     </array>
 </resources>
