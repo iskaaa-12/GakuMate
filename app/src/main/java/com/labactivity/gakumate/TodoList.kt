@@ -18,7 +18,7 @@ class TodoList : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerViewTasks.layoutManager = layoutManager
 
-        val adapter = TaskAdapter(tasksList)
+        val adapter = CategoryAdapter(tasksList)
         binding.recyclerViewTasks.adapter = adapter
 
 
@@ -30,6 +30,7 @@ class TodoList : AppCompatActivity() {
         binding.imgBtnBack.setOnClickListener(){
             finish()
         }
+
 
     }
 
@@ -43,7 +44,7 @@ class TodoList : AppCompatActivity() {
 
                 tasksList.sortBy { it.date }
 
-                (binding.recyclerViewTasks.adapter as? TaskAdapter)?.notifyDataSetChanged()
+                (binding.recyclerViewTasks.adapter as? CategoryAdapter)?.notifyDataSetChanged()
             }
         }
     }

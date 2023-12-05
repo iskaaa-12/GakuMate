@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
+    android:background="@color/ColorPrimary"
+    android:padding="15dp"
     tools:context=".TodoList">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EFF6AD"
+        android:background="@color/blue2"
         android:orientation="horizontal"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +24,7 @@
 
         <ImageButton
             android:id="@+id/imgBtnBack"
-            android:layout_width="104dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00FFFFFF"
@@ -34,19 +35,11 @@
             android:id="@+id/txtViewCategoryTitle"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/paprika"
+            android:fontFamily="@font/graduate"
             android:text="Category Title"
-            android:textColor="#000000"
-            android:textSize="30sp"
+            android:textColor="@color/yellow"
+            android:textSize="35sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imgBtnMenu"
-            android:layout_width="104dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
-            android:src="@drawable/menu" />
 
     </LinearLayout>
 
@@ -72,7 +65,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.96"
-        app:srcCompat="@drawable/add"
+        app:srcCompat="@drawable/addcat"
         tools:ignore="SpeakableTextPresentCheck" />
 
 
