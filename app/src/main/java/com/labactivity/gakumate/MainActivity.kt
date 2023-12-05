@@ -11,6 +11,7 @@ import com.orhanobut.dialogplus.ViewHolder
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var authListener: FirebaseAuth.AuthStateListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
 
         val add = binding.btnAdd
+
 
         add.setOnClickListener {
             val dialogBuilder = DialogPlus.newDialog(this)
@@ -31,10 +33,33 @@ class MainActivity : AppCompatActivity() {
             dialogBuilder.show()
         }
 
-        if (auth.currentUser == null) {
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
-            finish() // Optional: Finish the current activity to prevent going back to it using the back button
+        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            if (user == null) {
+                // User is not logged in, navigate to SignInActivity
+                val intent = Intent(this, SignInActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            // User is already logged in, continue with the current activity
         }
+
+        // Register the auth state listener
+        auth.addAuthStateListener(authListener)
+
+        binding.img1.setOnClickListener{
+
+            val intent = Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
+
+        }
+
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Unregister the auth state listener to avoid memory leaks
+        auth.removeAuthStateListener(authListener)
+    }
+
 }
