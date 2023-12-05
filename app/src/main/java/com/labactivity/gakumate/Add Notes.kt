@@ -13,14 +13,14 @@ import java.util.*
 class AddNotes : AppCompatActivity() {
     private lateinit var binding: ActivityAddNotesBinding
     private val tasksList = ArrayList<Tasks>()
-    private lateinit var adapter: CategoryAdapter
+    private lateinit var adapter: TaskAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = CategoryAdapter(tasksList)
+        adapter = TaskAdapter(tasksList)
 
         binding.btnAdd.setOnClickListener {
             val datePicker = binding.datePicker

@@ -14,8 +14,8 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class CategoryAdapter(private val tasks: ArrayList<Tasks>) :
-    RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class TaskAdapter(private val tasks: ArrayList<Tasks>) :
+    RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -29,11 +29,12 @@ class CategoryAdapter(private val tasks: ArrayList<Tasks>) :
             holder.showEditDialog(task, position)
         }
 
+
     }
 
     override fun getItemCount(): Int = tasks.size
 
-    inner class ViewHolder(private val binding: ListBinding, private val adapter: CategoryAdapter) :
+    inner class ViewHolder(private val binding: ListBinding, private val adapter: TaskAdapter) :
         RecyclerView.ViewHolder(binding.root) {
 
         private val dateFormat = SimpleDateFormat("EEEE, MMMM dd, yyyy", Locale.getDefault())
