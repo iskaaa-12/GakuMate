@@ -20,8 +20,20 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
 
+
         val add = binding.btnAdd
 
+        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            if (user == null) {
+                val intent = Intent(this, SignInActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        // Register the auth state listener
+        auth.addAuthStateListener(authListener)
 
         add.setOnClickListener {
             val dialogBuilder = DialogPlus.newDialog(this)
@@ -33,27 +45,20 @@ class MainActivity : AppCompatActivity() {
             dialogBuilder.show()
         }
 
-        authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            if (user == null) {
-                // User is not logged in, navigate to SignInActivity
-                val intent = Intent(this, SignInActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            // User is already logged in, continue with the current activity
-        }
-
-        // Register the auth state listener
-        auth.addAuthStateListener(authListener)
-
         binding.img1.setOnClickListener{
-
-            val intent = Intent(this, UserProfileActivity::class.java)
-            startActivity(intent)
-
+            navigateToUserProfile()
         }
+    }
 
+    private fun navigateToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun navigateToUserProfile() {
+        val intent = Intent(this, UserProfileActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroy() {
@@ -61,5 +66,4 @@ class MainActivity : AppCompatActivity() {
         // Unregister the auth state listener to avoid memory leaks
         auth.removeAuthStateListener(authListener)
     }
-
 }

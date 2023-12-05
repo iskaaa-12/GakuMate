@@ -42,7 +42,6 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
         binding.signOut.setOnClickListener {
-            auth.signOut()
             signOutUser()
         }
 
@@ -60,7 +59,6 @@ class UserProfileActivity : AppCompatActivity() {
         alertDialogBuilder.setTitle("Sign Out")
         alertDialogBuilder.setMessage("Are you sure you want to sign out?")
         alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
-            // User clicked Yes, sign out
             auth.signOut()
             val intent = Intent(this, SignInActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
