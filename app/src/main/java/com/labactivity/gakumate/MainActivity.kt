@@ -1,16 +1,19 @@
 package com.labactivity.gakumate
 
+import DatabaseHelper
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.labactivity.gakumate.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var categories: ArrayList<TheCategory>
+    private lateinit var adapter: CategoryAdapter
+    private lateinit var databaseHelper: DatabaseHelper
     private lateinit var auth: FirebaseAuth
     private lateinit var authListener: FirebaseAuth.AuthStateListener
 
@@ -19,15 +22,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-      val add = binding.btnAdd
-
-        add.setOnClickListener(){
+        val add = binding.btnAdd
+        add.setOnClickListener() {
             val intent = Intent(this, AddCategory_::class.java)
             startActivity(intent)
         }
 
+        databaseHelper = DatabaseHelper(this)
+        categories = databaseHelper.getCategories()
 
+        val recyclerView = binding.recyclerview
+        adapter = CategoryAdapter(categories)
+        recyclerView.adapter = adapter  // Set the adapter
 
+        // Add this line to attach a layout manager (e.g., LinearLayoutManager)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
 
@@ -40,19 +49,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
         binding.img1.setOnClickListener{
             navigateToUserProfile()
         }
     }
 
+    private fun updateAdapterData() {
+        val newData = databaseHelper.getCategories()
+        adapter.updateData(newData)
+    }
+
     private fun navigateToMain() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        updateAdapterData()
         finish()
     }
-
     private fun navigateToUserProfile() {
         val intent = Intent(this, UserProfileActivity::class.java)
         startActivity(intent)
@@ -63,4 +75,5 @@ class MainActivity : AppCompatActivity() {
         // Unregister the auth state listener to avoid memory leaks
         auth.removeAuthStateListener(authListener)
     }
+
 }

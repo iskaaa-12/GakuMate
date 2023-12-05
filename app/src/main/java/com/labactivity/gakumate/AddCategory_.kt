@@ -1,25 +1,22 @@
 package com.labactivity.gakumate
 
-import android.content.Intent
+import DatabaseHelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
 import android.widget.Toast
 import com.labactivity.gakumate.databinding.ActivityAddCategoryBinding
 
 
 class AddCategory_ : AppCompatActivity() {
     private lateinit var binding: ActivityAddCategoryBinding
+    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var categories: ArrayList<TheCategory>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val catInput = binding.editTextCategoryTitle
-        val cat: String = catInput.text.toString()
-
-
-
+        databaseHelper = DatabaseHelper(this)
+        categories = databaseHelper.getCategories()
 
         binding.color1.setOnClickListener(){
             binding.imgNoteC1.setImageResource(R.drawable.ic_tick)
@@ -110,27 +107,38 @@ class AddCategory_ : AppCompatActivity() {
             binding.imgNoteC2.setImageResource(0)
         }
         save()
-
+        binding.buttonCancel.setOnClickListener(){
+            finish()
+        }
 
     }
-    fun save(){
-        val catInput = binding.editTextCategoryTitle
-        binding.buttonSave.setOnClickListener(){
+    fun save() {
+        binding.buttonSave.setOnClickListener() {
+            val catInput = binding.editTextCategoryTitle
             val cat: String = catInput.text.toString()
-            if (cat.isEmpty()){
+
+            if (cat.isEmpty()) {
                 Toast.makeText(this, "Please enter a category.", Toast.LENGTH_SHORT).show()
-            }else if (isNoColorSelected()) {
+            } else if (isNoColorSelected()) {
                 Toast.makeText(this, "Please choose a color for your category.", Toast.LENGTH_SHORT).show()
-            }  else {
-                val mainIntent = Intent(this, MainActivity::class.java)
-                mainIntent.putExtra("categoryName", cat)
-                startActivity(mainIntent)
+            } else {
+                // Create a new TheCategory instance
+                val newCategory = TheCategory(cat, getSelectedColor())
+
+                // Add the new category to the list
+                categories.add(newCategory)
+
+                // Save the updated list to the database
+                databaseHelper.saveCat(categories)
+
+                // Close the AddCategory_ activity
                 finish()
-
-
             }
+
         }
-}
+    }
+
+
     private fun isNoColorSelected(): Boolean {
         // Check if all FrameLayouts have the ImageView unset (no color chosen)
         return (binding.imgNoteC1.drawable == null &&

@@ -68,11 +68,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="568dp"
         android:layout_below="@+id/search"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="13dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
         android:background="@drawable/background_recycler"
         android:padding="10sp"
         app:layout_constraintEnd_toEndOf="parent"
