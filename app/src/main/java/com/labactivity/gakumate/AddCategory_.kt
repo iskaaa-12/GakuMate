@@ -11,10 +11,13 @@ class AddCategory_ : AppCompatActivity() {
     private lateinit var binding: ActivityAddCategoryBinding
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var categories: ArrayList<TheCategory>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         databaseHelper = DatabaseHelper(this)
         categories = databaseHelper.getCategories()
 
@@ -112,6 +115,7 @@ class AddCategory_ : AppCompatActivity() {
         }
 
     }
+
     fun save() {
         binding.buttonSave.setOnClickListener() {
             val catInput = binding.editTextCategoryTitle
