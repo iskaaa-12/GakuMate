@@ -80,7 +80,7 @@ class SignUpActivity : AppCompatActivity() {
 
                         databaseRef.setValue(users).addOnCompleteListener {
                             if(it.isSuccessful){
-                                val intent = Intent(this, SignInActivity::class.java)
+                                val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
                             }else{
                                 Toast.makeText(this, "User data not saved!", Toast.LENGTH_SHORT).show()
