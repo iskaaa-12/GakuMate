@@ -47,6 +47,8 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
         binding.aboutUs.setOnClickListener {
+            val intent = Intent(this, About_app::class.java)
+            startActivity(intent)
 
         }
 
