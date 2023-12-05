@@ -1,4 +1,6 @@
 package com.labactivity.gakumate
 
-class TheCategory(val category: String) {
+import java.io.Serializable
+
+class TheCategory(val category: String, selectedColor: Int) : Serializable {
 }
