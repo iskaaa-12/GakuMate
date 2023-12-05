@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.labactivity.gakumate.databinding.ActivityTodoListBinding
-import com.labappdev.todolist.AddNotes
 
 class TodoList : AppCompatActivity() {
     private lateinit var binding: ActivityTodoListBinding
