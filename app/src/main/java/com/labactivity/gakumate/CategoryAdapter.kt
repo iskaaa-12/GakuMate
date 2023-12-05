@@ -29,7 +29,6 @@ class CategoryAdapter(private val tasks: ArrayList<Tasks>) :
             holder.showEditDialog(task, position)
         }
 
-
     }
 
     override fun getItemCount(): Int = tasks.size
