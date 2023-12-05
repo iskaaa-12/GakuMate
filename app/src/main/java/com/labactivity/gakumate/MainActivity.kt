@@ -1,8 +1,11 @@
 package com.labactivity.gakumate
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.labactivity.gakumate.databinding.ActivityMainBinding
 import com.orhanobut.dialogplus.DialogPlus
@@ -18,10 +21,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
+      val add = binding.btnAdd
+
+        binding.btnAdd.setOnClickListener(){
+            val intent = Intent(this, AddCategory_::class.java)
+            startActivity(intent)
+
+        }
 
 
-        val add = binding.btnAdd
+      
+         auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
 
         authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
@@ -32,18 +42,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Register the auth state listener
-        auth.addAuthStateListener(authListener)
 
-        add.setOnClickListener {
-            val dialogBuilder = DialogPlus.newDialog(this)
-                .setContentHolder(ViewHolder(R.layout.show_add))
-                .setExpanded(false) // This is optional, set it as per your requirement
-                .create()
-
-            // Show the dialog
-            dialogBuilder.show()
-        }
 
         binding.img1.setOnClickListener{
             navigateToUserProfile()

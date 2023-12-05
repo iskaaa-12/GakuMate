@@ -14,6 +14,9 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".AddCategory_"
+            android:exported="false" />
+        <activity
             android:name=".About_app"
             android:exported="false" />
         <activity
@@ -27,7 +30,8 @@
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".SignInActivity"
             android:exported="false"

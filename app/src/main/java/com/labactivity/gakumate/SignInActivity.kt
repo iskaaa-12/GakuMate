@@ -8,14 +8,10 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Patterns
-import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.labactivity.gakumate.AddCategory
-import com.labactivity.gakumate.R
-import com.labactivity.gakumate.SignUpActivity
 import com.labactivity.gakumate.databinding.ActivitySignInBinding
 class SignInActivity : AppCompatActivity() {
 
