@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#084C61"
+        android:fontFamily="@font/graduate"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Add Task"
+        android:textColor="#FFC857"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".AddNotes">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/paprika"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Choose a date:"
+                android:textColor="#FFC857"
+                android:textSize="17sp" />
+
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:calendarViewShown="true"
+                android:headerBackground="@color/blue1"
+                android:spinnersShown="false" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/paprika"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Choose time:"
+                android:textColor="#FFC857"
+                android:textSize="17sp" />
+
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="300dp"
+                android:layout_height="379dp"
+                android:layout_gravity="center"
+                android:layout_weight="4"
+                android:background="#FFFFFF"
+                android:headerBackground="@color/blue1" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/paprika"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Add Tasks:"
+                android:textColor="#FFC857"
+                android:textSize="17sp" />
+
+
+            <CheckBox
+                android:id="@+id/checkBoxTasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/paprika"
+                android:text="CheckBox"
+                android:textColor="@color/yellow"
+                android:textSize="17sp" />
+
+
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/blue2"
+                android:text="Add Notes"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
