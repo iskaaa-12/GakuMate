@@ -12,6 +12,9 @@
         android:theme="@style/Theme.GakuMate"
         tools:targetApi="31">
         <activity
+            android:name=".AddNotes"
+            android:exported="false" />
+        <activity
             android:name=".TodoList"
             android:exported="false" />
         <activity
