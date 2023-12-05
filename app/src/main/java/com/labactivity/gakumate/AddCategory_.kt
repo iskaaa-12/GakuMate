@@ -1,5 +1,6 @@
 package com.labactivity.gakumate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
@@ -121,7 +122,10 @@ class AddCategory_ : AppCompatActivity() {
             }else if (isNoColorSelected()) {
                 Toast.makeText(this, "Please choose a color for your category.", Toast.LENGTH_SHORT).show()
             }  else {
-
+                val mainIntent = Intent(this, MainActivity::class.java)
+                mainIntent.putExtra("categoryName", cat)
+                startActivity(mainIntent)
+                finish()
 
 
             }

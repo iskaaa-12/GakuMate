@@ -1,15 +1,13 @@
 package com.labactivity.gakumate
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.labactivity.gakumate.databinding.ActivityMainBinding
-import com.orhanobut.dialogplus.DialogPlus
-import com.orhanobut.dialogplus.ViewHolder
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -23,15 +21,15 @@ class MainActivity : AppCompatActivity() {
 
       val add = binding.btnAdd
 
-        binding.btnAdd.setOnClickListener(){
+        add.setOnClickListener(){
             val intent = Intent(this, AddCategory_::class.java)
             startActivity(intent)
-
         }
 
 
-      
-         auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
+
+
+        auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
 
         authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
