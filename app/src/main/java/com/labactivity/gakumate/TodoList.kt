@@ -23,6 +23,12 @@ class TodoList : AppCompatActivity() {
         adapter = TaskAdapter(this, tasksList)
         binding.recyclerViewTasks.adapter = adapter
 
+        val categoryName = intent.getStringExtra("categoryName")
+
+        if (!categoryName.isNullOrBlank()) {
+            binding.txtViewCategoryTitle.text = categoryName
+        }
+
         binding.floatingAddRecBtn.setOnClickListener {
             val intentAddNotes = Intent(this, AddNotes::class.java)
             startActivityForResult(intentAddNotes, ADD_NOTES_REQUEST)
