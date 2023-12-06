@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.filter(newText.orEmpty())
-                return true
+                    adapter.filter(newText.orEmpty().toLowerCase())
+                    return true
             }
         })
 
