@@ -1,6 +1,7 @@
 package com.labactivity.gakumate
 
 import DatabaseHelper
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -11,15 +12,18 @@ class AddCategory_ : AppCompatActivity() {
     private lateinit var binding: ActivityAddCategoryBinding
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var categories: ArrayList<TheCategory>
-
+    private lateinit var adapter: CategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Retrieve categories from intent
+        categories = intent.getSerializableExtra("categories") as? ArrayList<TheCategory> ?: ArrayList()
+        adapter = CategoryAdapter(categories)
+
         databaseHelper = DatabaseHelper(this)
-        categories = databaseHelper.getCategories()
 
         binding.color1.setOnClickListener(){
             binding.imgNoteC1.setImageResource(R.drawable.ic_tick)
@@ -110,14 +114,14 @@ class AddCategory_ : AppCompatActivity() {
             binding.imgNoteC2.setImageResource(0)
         }
         save()
-        binding.buttonCancel.setOnClickListener(){
+        binding.buttonCancel.setOnClickListener {
             finish()
         }
 
     }
 
     fun save() {
-        binding.buttonSave.setOnClickListener() {
+        binding.buttonSave.setOnClickListener {
             val catInput = binding.editTextCategoryTitle
             val cat: String = catInput.text.toString()
 
@@ -132,13 +136,15 @@ class AddCategory_ : AppCompatActivity() {
                 // Add the new category to the list
                 categories.add(newCategory)
 
-                // Save the updated list to the database
-                databaseHelper.saveCat(categories)
+                // Save the updated list to the intent
+                intent.putExtra("categories", categories)
+
+                // Set the result to indicate success
+                setResult(Activity.RESULT_OK, intent)
 
                 // Close the AddCategory_ activity
                 finish()
             }
-
         }
     }
 

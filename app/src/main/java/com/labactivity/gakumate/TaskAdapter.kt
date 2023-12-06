@@ -98,6 +98,8 @@ class TaskAdapter(
                 adapter.notifyDataSetChanged()
                 notifyItemChanged(position)
 
+
+
                 dialogPlus.dismiss()
             }
 
