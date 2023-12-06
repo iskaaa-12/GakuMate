@@ -1,9 +1,12 @@
 package com.labactivity.gakumate
 
+import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.labactivity.gakumate.databinding.EditPopupBinding
 import com.labactivity.gakumate.databinding.ListBinding
@@ -14,7 +17,7 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class TaskAdapter(private val tasks: ArrayList<Tasks>) :
+class TaskAdapter(private val context: Context, private val tasks: ArrayList<Tasks>) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,8 +31,6 @@ class TaskAdapter(private val tasks: ArrayList<Tasks>) :
         holder.itemView.setOnClickListener {
             holder.showEditDialog(task, position)
         }
-
-
     }
 
     override fun getItemCount(): Int = tasks.size
@@ -43,15 +44,17 @@ class TaskAdapter(private val tasks: ArrayList<Tasks>) :
         fun bind(task: Tasks) {
             binding.txtViewDate.text = dateFormat.format(task.date)
             binding.txtViewTime.text = timeFormat.format(task.time)
-            binding.txtViewNotes.text = task.tasks
+            binding.txtViewNotes.text = task.taskText
+            binding.imgBtnDelete.setOnClickListener() {
+                showDeleteDialog(task)
+            }
         }
 
         fun showEditDialog(task: Tasks, position: Int) {
-            val dialogView =
-                EditPopupBinding.inflate(LayoutInflater.from(binding.root.context))
+            val dialogView = EditPopupBinding.inflate(LayoutInflater.from(binding.root.context))
             val datePicker = dialogView.datePicker
             val timePicker = dialogView.timePicker
-            val edtTxtAddNotes = dialogView.edtTxtAddNotes
+            val edtTxtEditNotes = dialogView.edtTxtEditNotes
             val btnUpdate = dialogView.btnUpdate
 
             val dialogPlus = DialogPlus.newDialog(binding.root.context)
@@ -74,25 +77,40 @@ class TaskAdapter(private val tasks: ArrayList<Tasks>) :
             timePicker.hour = time.hours
             timePicker.minute = time.minutes
 
-            edtTxtAddNotes.setText(task.tasks)
+            edtTxtEditNotes.setText(task.taskText)
 
             btnUpdate.setOnClickListener {
                 val newDate = getDateFromDatePicker(datePicker)
                 val newTime = getTimeFromTimePicker(timePicker)
-                val newTaskText = edtTxtAddNotes.text.toString()
+                val newTaskText = edtTxtEditNotes.text.toString() // Extract text from EditText
 
                 task.date = newDate
                 task.time = newTime
-                task.tasks = newTaskText
+                task.taskText = newTaskText // Update the taskText property
 
                 adapter.notifyDataSetChanged()
                 notifyItemChanged(position)
 
                 dialogPlus.dismiss()
-
             }
 
             dialogPlus.show()
+        }
+
+        private fun showDeleteDialog(task: Tasks) {
+            val alertDialogBuilder = AlertDialog.Builder(binding.root.context)
+            alertDialogBuilder.setTitle("Delete Task")
+            alertDialogBuilder.setMessage("Are you sure you want to delete this task?")
+            alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+                tasks.remove(task)
+                notifyDataSetChanged()
+                Toast.makeText(binding.root.context, "Deleted Successfully!", Toast.LENGTH_SHORT).show()
+            }
+            alertDialogBuilder.setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
         }
 
         private fun getDateFromDatePicker(datePicker: DatePicker): Date {
