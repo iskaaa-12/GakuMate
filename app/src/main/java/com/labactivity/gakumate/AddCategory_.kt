@@ -138,6 +138,7 @@ class AddCategory_ : AppCompatActivity() {
 
                 // Save the updated list to the intent
                 intent.putExtra("categories", categories)
+                intent.putExtra("selectedCategory", cat) // Pass the selected category name
 
                 // Set the result to indicate success
                 setResult(Activity.RESULT_OK, intent)
@@ -147,6 +148,7 @@ class AddCategory_ : AppCompatActivity() {
             }
         }
     }
+
 
 
     private fun isNoColorSelected(): Boolean {
@@ -178,5 +180,3 @@ class AddCategory_ : AppCompatActivity() {
     }
 
 }
-
-

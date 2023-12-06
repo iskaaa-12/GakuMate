@@ -29,13 +29,11 @@ class MainActivity : AppCompatActivity() {
         databaseHelper = DatabaseHelper(this)
         categories = databaseHelper.getCategories()
 
-        // Declare recyclerView once
         val recyclerView = binding.recyclerview
 
         adapter = CategoryAdapter(categories)
-        recyclerView.adapter = adapter  // Set the adapter
+        recyclerView.adapter = adapter
 
-        // Add this line to attach a layout manager (e.g., LinearLayoutManager)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         adapter = CategoryAdapter(categories)
@@ -48,8 +46,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                    adapter.filter(newText.orEmpty().toLowerCase())
-                    return true
+                adapter.filter(newText.orEmpty())
+                return true
             }
         })
 
@@ -59,8 +57,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("categories", categories)
             startActivityForResult(intent, ADD_CATEGORY_REQUEST)
         }
-
-
 
         auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
 
@@ -73,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.img1.setOnClickListener{
+        binding.img1.setOnClickListener {
             navigateToUserProfile()
         }
     }
@@ -89,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         updateAdapterData()
         finish()
     }
+
     private fun navigateToUserProfile() {
         val intent = Intent(this, UserProfileActivity::class.java)
         startActivity(intent)
@@ -104,13 +101,23 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ADD_CATEGORY_REQUEST && resultCode == Activity.RESULT_OK) {
             // Update the adapter data
-            val updatedCategories = data?.getSerializableExtra("categories") as? ArrayList<TheCategory>
+            val updatedCategories =
+                data?.getSerializableExtra("categories") as? ArrayList<TheCategory>
             updatedCategories?.let {
                 categories = it
                 adapter.updateData(categories)
                 adapter.notifyDataSetChanged()
+
+                // Retrieve the selected category
+                val selectedCategory = data?.getStringExtra("selectedCategory")
+
+                // Open TodoList activity with the selected category name
+                selectedCategory?.let {
+                    val intent = Intent(this, TodoList::class.java)
+                    intent.putExtra("categoryName", it)
+                    startActivity(intent)
+                }
             }
         }
     }
-
 }

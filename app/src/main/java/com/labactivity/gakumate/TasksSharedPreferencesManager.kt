@@ -1,14 +1,23 @@
+package com.labactivity.gakumate
+
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.labactivity.gakumate.Tasks
 
-class TasksSharedPreferencesManager(private val context: Context) {
+class TasksSharedPreferencesManager(context: Context, categoryName: String? = null) {
+    private val sharedPreferences: SharedPreferences
+    private val gson = Gson()
 
-    private val sharedPreferences: SharedPreferences by lazy {
-        context.getSharedPreferences("tasks_shared_prefs", Context.MODE_PRIVATE)
+    // Use a different preference key for each category
+    private val PREFS_NAME = "MyPrefsFile_${categoryName ?: "DefaultCategory"}"
+    private val TASKS_KEY = "tasks_key"
+
+    init {
+        sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     }
+
 
     fun saveTasks(tasks: ArrayList<Tasks>) {
         val editor = sharedPreferences.edit()

@@ -1,6 +1,5 @@
 package com.labactivity.gakumate
 
-import TasksSharedPreferencesManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -39,7 +38,6 @@ class AddNotes : AppCompatActivity() {
 
         binding = ActivityAddNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         editText = binding.edtTxtAddTasks
         todoList = binding.todoList

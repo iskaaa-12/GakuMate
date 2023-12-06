@@ -101,6 +101,7 @@
                 android:layout_gravity="center"
                 android:backgroundTint="@color/blue2"
                 android:text="Update"
+                android:textColor="@color/yellow"
                 android:textSize="20sp" />
 
 

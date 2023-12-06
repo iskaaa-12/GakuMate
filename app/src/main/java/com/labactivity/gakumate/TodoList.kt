@@ -1,6 +1,5 @@
 package com.labactivity.gakumate
 
-import TasksSharedPreferencesManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +18,17 @@ class TodoList : AppCompatActivity() {
         binding = ActivityTodoListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        tasksSharedPreferencesManager = TasksSharedPreferencesManager(this)
+        val categoryName = intent.getStringExtra("categoryName")
+
+        if (!categoryName.isNullOrBlank()) {
+            binding.txtViewCategoryTitle.text = categoryName
+            tasksSharedPreferencesManager = TasksSharedPreferencesManager(this, categoryName)
+        } else {
+            // Handle the case when categoryName is null or blank
+            finish()
+            return
+        }
+
         tasksList.addAll(tasksSharedPreferencesManager.getTasks())
 
         val layoutManager = LinearLayoutManager(this)
@@ -27,12 +36,6 @@ class TodoList : AppCompatActivity() {
 
         adapter = TaskAdapter(this, tasksList, tasksSharedPreferencesManager)
         binding.recyclerViewTasks.adapter = adapter
-
-        val categoryName = intent.getStringExtra("categoryName")
-
-        if (!categoryName.isNullOrBlank()) {
-            binding.txtViewCategoryTitle.text = categoryName
-        }
 
         binding.floatingAddRecBtn.setOnClickListener {
             val intentAddNotes = Intent(this, AddNotes::class.java)
@@ -43,6 +46,12 @@ class TodoList : AppCompatActivity() {
             finish()
         }
     }
+
+    private fun initializeTasksManager(categoryName: String) {
+        tasksSharedPreferencesManager = TasksSharedPreferencesManager(this, categoryName)
+    }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -60,6 +69,8 @@ class TodoList : AppCompatActivity() {
             }
         }
     }
+
+
 
     companion object {
         const val ADD_NOTES_REQUEST = 1
