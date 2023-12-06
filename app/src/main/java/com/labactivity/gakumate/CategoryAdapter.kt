@@ -39,7 +39,10 @@ class CategoryAdapter(private var dataList: ArrayList<TheCategory>) : RecyclerVi
         // Set click listener for the item
         holder.itemView.setOnClickListener {
             val intentMain = Intent(holder.itemView.context, TodoList::class.java)
-            intentMain.putExtra("category", currentItem)
+            intentMain.putExtra(
+                "categoryName",
+                currentItem.category
+            ) // Use the correct property for the category name
             holder.itemView.context.startActivity(intentMain)
         }
     }

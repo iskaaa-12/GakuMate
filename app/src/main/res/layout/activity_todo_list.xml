@@ -38,7 +38,7 @@
             android:fontFamily="@font/graduate"
             android:text="Category Title"
             android:textColor="@color/yellow"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
     </LinearLayout>

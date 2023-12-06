@@ -27,7 +27,7 @@
             android:fontFamily="@font/paprika"
             android:text="Date"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/txtViewTime"
@@ -39,7 +39,7 @@
             android:paddingStart="10dp"
             android:text="Time"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <ImageButton
             android:id="@+id/imgBtnDelete"
@@ -54,8 +54,8 @@
 
     <TextView
         android:id="@+id/txtViewNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="80dp"
         android:layout_marginRight="15dp"
