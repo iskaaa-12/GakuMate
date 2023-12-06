@@ -89,7 +89,7 @@ class TaskAdapter(
             btnUpdate.setOnClickListener {
                 val newDate = getDateFromDatePicker(datePicker)
                 val newTime = getTimeFromTimePicker(timePicker)
-                val newTaskText = edtTxtEditNotes.text.toString() // Extract text from EditText
+                val newTaskText = edtTxtEditNotes.text.toString()
 
                 task.date = newDate
                 task.time = newTime
@@ -97,8 +97,6 @@ class TaskAdapter(
 
                 adapter.notifyDataSetChanged()
                 notifyItemChanged(position)
-
-
 
                 dialogPlus.dismiss()
             }
