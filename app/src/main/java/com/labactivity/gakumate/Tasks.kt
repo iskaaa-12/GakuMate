@@ -7,5 +7,6 @@ import java.util.Date
 data class Tasks(
     var date: Date,
     var time: Time,
-    var tasks: String
+    var taskText: String,
+    var taskList: List<String> = emptyList()
 ) : Serializable
