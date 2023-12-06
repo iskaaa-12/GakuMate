@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                 adapter.filter(newText.orEmpty())
                 return true
             }
+
         })
 
 
