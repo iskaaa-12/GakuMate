@@ -7,22 +7,31 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CategoryAdapter(private var dataList: ArrayList<TheCategory>) : RecyclerView.Adapter<CategoryAdapter.CatViewHolder>() {
+class CategoryAdapter(private var originalDataList: ArrayList<TheCategory>) : RecyclerView.Adapter<CategoryAdapter.CatViewHolder>() {
 
-
+    private var dataList: ArrayList<TheCategory> = ArrayList(originalDataList)
     fun filter(query: String) {
-        val filteredList = ArrayList<TheCategory>()
-        for (category in dataList) {
-            if (category.category.toLowerCase().contains(query.toLowerCase())) {
-                filteredList.add(category)
+        dataList.clear()
+
+        if (query.isEmpty()) {
+            dataList.addAll(originalDataList)
+        } else {
+            val filteredList = originalDataList.filter {
+                it.category.toLowerCase().contains(query.toLowerCase())
             }
+            dataList.addAll(filteredList)
         }
-        dataList = filteredList
+
         notifyDataSetChanged()
     }
 
     fun updateData(newData: ArrayList<TheCategory>) {
-        dataList = newData
+        originalDataList.clear()
+        originalDataList.addAll(newData)
+
+        dataList.clear()
+        dataList.addAll(newData)
+
         notifyDataSetChanged()
     }
 
