@@ -1,6 +1,5 @@
 package com.labactivity.gakumate
 
-import TasksSharedPreferencesManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -37,27 +36,20 @@ class AddNotes : AppCompatActivity() {
 
         tasksSharedPreferencesManager = TasksSharedPreferencesManager(this)
 
-        // Inflate the layout using data binding
         binding = ActivityAddNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
-        // Initialize views after inflating the layout
         editText = binding.edtTxtAddTasks
         todoList = binding.todoList
 
-        // Initialize SharedPreferences
         val prefs: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val savedTasks: String? = prefs.getString(TASKS_KEY, null)
 
-        // If there are saved tasks, deserialize them and add to the tasksList
         savedTasks?.let {
             val savedTaskList: ArrayList<Tasks> = deserializeTaskList(it)
             tasksList.addAll(savedTaskList)
         }
 
-        // Initialize your adapter with the tasksList
         adapter = TaskAdapter(this, tasksList, tasksSharedPreferencesManager)
 
         editText.addTextChangedListener(object : TextWatcher {

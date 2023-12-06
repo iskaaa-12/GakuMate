@@ -91,7 +91,7 @@
                 android:inputType="textMultiLine"
                 android:minHeight="48dp"
                 android:textColor="@color/yellow"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/yellow" />
 
 
             <Button
@@ -101,6 +101,7 @@
                 android:layout_gravity="center"
                 android:backgroundTint="@color/blue2"
                 android:text="Update"
+                android:textColor="@color/yellow"
                 android:textSize="20sp" />
 
 

@@ -1,6 +1,5 @@
 package com.labactivity.gakumate
 
-import TasksSharedPreferencesManager
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
@@ -20,9 +19,11 @@ import java.util.Locale
 
 class TaskAdapter(
     private val context: Context,
-    private val tasks: ArrayList<Tasks>,
+    private var tasks: ArrayList<Tasks> = ArrayList(),
     private val tasksSharedPreferencesManager: TasksSharedPreferencesManager // Add this parameter
 ) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -46,7 +47,11 @@ class TaskAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private val dateFormat = SimpleDateFormat("EEEE, MMMM dd, yyyy", Locale.getDefault())
-        private val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+
+        fun updateTasks(newTasks: ArrayList<Tasks>) {
+            tasks = newTasks
+            notifyDataSetChanged()
+        }        private val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
 
         fun bind(task: Tasks) {
             binding.txtViewDate.text = dateFormat.format(task.date)
@@ -89,16 +94,14 @@ class TaskAdapter(
             btnUpdate.setOnClickListener {
                 val newDate = getDateFromDatePicker(datePicker)
                 val newTime = getTimeFromTimePicker(timePicker)
-                val newTaskText = edtTxtEditNotes.text.toString() // Extract text from EditText
+                val newTaskText = edtTxtEditNotes.text.toString()
 
                 task.date = newDate
                 task.time = newTime
-                task.taskText = newTaskText // Update the taskText property
+                task.taskText = newTaskText
 
                 adapter.notifyDataSetChanged()
                 notifyItemChanged(position)
-
-
 
                 dialogPlus.dismiss()
             }
