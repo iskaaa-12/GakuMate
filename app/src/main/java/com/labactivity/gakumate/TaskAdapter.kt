@@ -1,5 +1,6 @@
 package com.labactivity.gakumate
 
+import TasksSharedPreferencesManager
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
@@ -17,12 +18,15 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class TaskAdapter(private val context: Context, private val tasks: ArrayList<Tasks>) :
-    RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter(
+    private val context: Context,
+    private val tasks: ArrayList<Tasks>,
+    private val tasksSharedPreferencesManager: TasksSharedPreferencesManager // Add this parameter
+) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding, this)
+        return ViewHolder(binding, this, tasksSharedPreferencesManager)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -35,8 +39,11 @@ class TaskAdapter(private val context: Context, private val tasks: ArrayList<Tas
 
     override fun getItemCount(): Int = tasks.size
 
-    inner class ViewHolder(private val binding: ListBinding, private val adapter: TaskAdapter) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(
+        private val binding: ListBinding,
+        private val adapter: TaskAdapter,
+        private val tasksSharedPreferencesManager: TasksSharedPreferencesManager // Add this parameter
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         private val dateFormat = SimpleDateFormat("EEEE, MMMM dd, yyyy", Locale.getDefault())
         private val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
@@ -102,8 +109,21 @@ class TaskAdapter(private val context: Context, private val tasks: ArrayList<Tas
             alertDialogBuilder.setTitle("Delete Task")
             alertDialogBuilder.setMessage("Are you sure you want to delete this task?")
             alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+                // Log statement to check the task being deleted
+                println("Deleting task: $task")
+
+                // Remove the task from the list
                 tasks.remove(task)
+
+                // Log statement to check the updated tasks list
+                println("Updated tasks list: $tasks")
+
+                // Notify the adapter
                 notifyDataSetChanged()
+
+                // Save the updated tasks list to SharedPreferences
+                tasksSharedPreferencesManager.saveTasks(tasks)
+
                 Toast.makeText(binding.root.context, "Deleted Successfully!", Toast.LENGTH_SHORT).show()
             }
             alertDialogBuilder.setNegativeButton("No") { dialog, _ ->
