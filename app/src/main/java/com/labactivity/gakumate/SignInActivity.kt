@@ -28,6 +28,7 @@ class SignInActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
         setSignUp()
+        setForgot()
 
         binding.loginId.setOnClickListener {
             val email = binding.emailLi.text.toString()
@@ -87,6 +88,35 @@ class SignInActivity : AppCompatActivity() {
 
     private fun openSignUp() {
         val intent = Intent(this, SignUpActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun setForgot() {
+        val forgotText = getString(R.string.forgot)
+        val spannableString = SpannableString(forgotText)
+
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(view: View) {
+                openForgot()
+            }
+        }
+
+        val startIndex = forgotText.indexOf("Forgot Password")
+        val endIndex = startIndex + "Forgot Password".length
+
+        spannableString.setSpan(
+            clickableSpan,
+            startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        binding.forgotPass.text = spannableString
+        binding.forgotPass.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    private fun openForgot() {
+        val intent = Intent(this, Forgot_Password::class.java)
         startActivity(intent)
     }
 }

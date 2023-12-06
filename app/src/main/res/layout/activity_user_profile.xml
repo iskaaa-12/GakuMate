@@ -40,6 +40,15 @@
         android:textStyle="bold"
         android:textSize="45sp"/>
 
+            <TextView
+                android:id="@+id/edit_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Edit Profile"
+                android:layout_marginTop="20dp"
+                android:textSize="30sp"/>
+
         <TextView
         android:id="@+id/about_us"
         android:layout_width="match_parent"
