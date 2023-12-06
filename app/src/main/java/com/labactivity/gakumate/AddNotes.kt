@@ -1,5 +1,6 @@
 package com.labactivity.gakumate
 
+import TasksSharedPreferencesManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -25,6 +26,7 @@ class AddNotes : AppCompatActivity() {
     private lateinit var binding: ActivityAddNotesBinding
     private lateinit var adapter: TaskAdapter
     private val tasksList = ArrayList<Tasks>()
+    private lateinit var tasksSharedPreferencesManager: TasksSharedPreferencesManager
 
     // SharedPreferences key and file name
     private val PREFS_NAME = "MyPrefsFile"
@@ -33,9 +35,13 @@ class AddNotes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        tasksSharedPreferencesManager = TasksSharedPreferencesManager(this)
+
         // Inflate the layout using data binding
         binding = ActivityAddNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         // Initialize views after inflating the layout
         editText = binding.edtTxtAddTasks
@@ -52,7 +58,7 @@ class AddNotes : AppCompatActivity() {
         }
 
         // Initialize your adapter with the tasksList
-        adapter = TaskAdapter(this, tasksList)
+        adapter = TaskAdapter(this, tasksList, tasksSharedPreferencesManager)
 
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence?, i: Int, i1: Int, i2: Int) {}

@@ -1,5 +1,6 @@
 package com.labactivity.gakumate
 
+import TasksSharedPreferencesManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import com.labactivity.gakumate.databinding.ActivityTodoListBinding
 class TodoList : AppCompatActivity() {
 
     private lateinit var binding: ActivityTodoListBinding
+    private lateinit var tasksSharedPreferencesManager: TasksSharedPreferencesManager
     private val tasksList = ArrayList<Tasks>()
     private lateinit var adapter: TaskAdapter
 
@@ -17,10 +19,13 @@ class TodoList : AppCompatActivity() {
         binding = ActivityTodoListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        tasksSharedPreferencesManager = TasksSharedPreferencesManager(this)
+        tasksList.addAll(tasksSharedPreferencesManager.getTasks())
+
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerViewTasks.layoutManager = layoutManager
 
-        adapter = TaskAdapter(this, tasksList)
+        adapter = TaskAdapter(this, tasksList, tasksSharedPreferencesManager)
         binding.recyclerViewTasks.adapter = adapter
 
         val categoryName = intent.getStringExtra("categoryName")
@@ -49,6 +54,9 @@ class TodoList : AppCompatActivity() {
                 tasksList.sortBy { it.date }
 
                 adapter.notifyDataSetChanged()
+
+                // Save the updated tasks list to SharedPreferences
+                tasksSharedPreferencesManager.saveTasks(tasksList)
             }
         }
     }
