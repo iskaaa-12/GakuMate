@@ -20,6 +20,7 @@ class CategoryAdapter(private var dataList: ArrayList<TheCategory>) : RecyclerVi
         dataList = filteredList
         notifyDataSetChanged()
     }
+
     fun updateData(newData: ArrayList<TheCategory>) {
         dataList = newData
         notifyDataSetChanged()

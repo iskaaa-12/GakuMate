@@ -15,13 +15,36 @@
 
         <TextView
             android:id="@+id/categoryTitle"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="Title"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/editCat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="180dp"
+            android:layout_toRightOf="@+id/categoryTitle"
+            android:background="@drawable/car_ui_icon_edit"
+            android:backgroundTint="@color/red"
+            android:text="edit">
+
+        </Button>
+        <Button
+            android:id="@+id/delCat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@+id/editCat"
+            android:background="@drawable/delete"
+            android:backgroundTint="@color/red"
+            android:text="del">
+
+        </Button>
 
 
 
