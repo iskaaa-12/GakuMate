@@ -84,14 +84,35 @@
                 android:textSize="17sp" />
 
 
-            <CheckBox
-                android:id="@+id/checkBoxTasks"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/paprika"
-                android:text="CheckBox"
-                android:textColor="@color/yellow"
-                android:textSize="17sp" />
+                android:layout_height="match_parent"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                tools:context=".MainActivity">
+
+                <EditText
+                    android:id="@+id/edtTxtAddTasks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/paprika"
+                    android:gravity="top"
+                    android:hint="Enter your to-do list here..."
+                    android:inputType="textMultiLine"
+                    android:minLines="5"
+                    android:textColor="@color/yellow"
+                    android:textColorHint="@color/yellow" />
+
+                <LinearLayout
+                    android:id="@+id/todoList"
+                    android:layout_below="@id/edtTxtAddTasks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
+            </RelativeLayout>
 
 
 

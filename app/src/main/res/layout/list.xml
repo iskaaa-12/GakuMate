@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0A65AE"
+        android:background="@color/blue2"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -36,6 +36,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:fontFamily="@font/paprika"
+            android:paddingStart="10dp"
             android:text="Time"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
@@ -45,7 +46,7 @@
             android:layout_width="50dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:background="@drawable/background"
+            android:background="@drawable/bgeditdelete"
             android:src="@drawable/delete"
             tools:ignore="SpeakableTextPresentCheck" />
 
