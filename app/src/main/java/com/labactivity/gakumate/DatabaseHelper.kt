@@ -12,14 +12,10 @@ class DatabaseHelper(context: Context) {
     init {
         // Initialize SharedPreferences
         sharedPreferences = context.getSharedPreferences("CatDatabase", Context.MODE_PRIVATE)
-        val gson = Gson()
     }
 
-    fun saveCat(cats: ArrayList<TheCategory>) {
-        // Convert ArrayList to JSON using Gson
+    fun saveCategories(cats: ArrayList<TheCategory>) {
         val json = gson.toJson(cats)
-
-        // Save JSON to SharedPreferences
         sharedPreferences.edit().putString("categories", json).apply()
     }
 

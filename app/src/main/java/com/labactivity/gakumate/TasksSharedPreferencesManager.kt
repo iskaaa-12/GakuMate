@@ -21,14 +21,13 @@ class TasksSharedPreferencesManager(context: Context, categoryName: String? = nu
 
     fun saveTasks(tasks: ArrayList<Tasks>) {
         val editor = sharedPreferences.edit()
-        val gson = Gson()
         val tasksJson = gson.toJson(tasks)
-        editor.putString("tasks", tasksJson)
+        editor.putString(TASKS_KEY, tasksJson) // Use TASKS_KEY here
         editor.apply()
     }
 
     fun getTasks(): ArrayList<Tasks> {
-        val tasksJson = sharedPreferences.getString("tasks", "")
+        val tasksJson = sharedPreferences.getString(TASKS_KEY, "")
         val gson = Gson()
         val type = object : TypeToken<ArrayList<Tasks>>() {}.type
         return gson.fromJson(tasksJson, type) ?: ArrayList()
