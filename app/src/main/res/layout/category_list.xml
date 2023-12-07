@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,35 +16,36 @@
 
         <TextView
             android:id="@+id/categoryTitle"
-            android:layout_width="250dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/paprika"
             android:text="Title"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/editCat"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/categoryTitle"
             android:background="@drawable/car_ui_icon_edit"
             android:backgroundTint="@color/red"
-            android:text="edit">
+            tools:ignore="SpeakableTextPresentCheck">
 
         </Button>
+
         <Button
             android:id="@+id/delCat"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="2dp"
             android:layout_toRightOf="@+id/editCat"
             android:background="@drawable/delete"
             android:backgroundTint="@color/red"
-            android:text="del">
+            tools:ignore="SpeakableTextPresentCheck">
 
         </Button>
 

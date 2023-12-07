@@ -1,8 +1,9 @@
+package com.labactivity.gakumate
+
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.labactivity.gakumate.TheCategory
 
 class DatabaseHelper(context: Context) {
 
