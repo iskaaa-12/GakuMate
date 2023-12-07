@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CategoryAdapter(private var dataList: ArrayList<TheCategory>) : RecyclerView.Adapter<CategoryAdapter.CatViewHolder>() {
 
-
     fun filter(query: String) {
         val filteredList = ArrayList<TheCategory>()
         for (category in dataList) {
