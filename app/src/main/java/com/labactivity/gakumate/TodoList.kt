@@ -51,8 +51,6 @@ class TodoList : AppCompatActivity() {
         tasksSharedPreferencesManager = TasksSharedPreferencesManager(this, categoryName)
     }
 
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -69,8 +67,6 @@ class TodoList : AppCompatActivity() {
             }
         }
     }
-
-
 
     companion object {
         const val ADD_NOTES_REQUEST = 1

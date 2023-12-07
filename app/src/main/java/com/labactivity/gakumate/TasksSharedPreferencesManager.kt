@@ -18,7 +18,6 @@ class TasksSharedPreferencesManager(context: Context, categoryName: String? = nu
         sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     }
 
-
     fun saveTasks(tasks: ArrayList<Tasks>) {
         val editor = sharedPreferences.edit()
         val tasksJson = gson.toJson(tasks)

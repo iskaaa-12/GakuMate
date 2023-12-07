@@ -1,6 +1,5 @@
 package com.labactivity.gakumate
 
-import DatabaseHelper
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
