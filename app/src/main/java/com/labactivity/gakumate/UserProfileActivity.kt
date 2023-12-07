@@ -3,6 +3,7 @@ package com.labactivity.gakumate
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
@@ -13,15 +14,18 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.labactivity.gakumate.databinding.ActivitySignInBinding
 import com.labactivity.gakumate.databinding.ActivityUserProfileBinding
+import java.io.File
 
 class UserProfileActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityUserProfileBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
+    private lateinit var storageReference : StorageReference
     private lateinit var databaseReference: DatabaseReference
     private lateinit var user: Users
     private lateinit var uid:String
@@ -41,12 +45,17 @@ class UserProfileActivity : AppCompatActivity() {
             getUserData()
         }
 
+        binding.editProfile.setOnClickListener {
+            val intent = Intent(this, EditProfile::class.java)
+            startActivity(intent)
+        }
+
         binding.signOut.setOnClickListener {
             signOutUser()
         }
 
         binding.aboutUs.setOnClickListener {
-            val intent = Intent(this, About_app::class.java)
+            val intent = Intent(this, EditProfile::class.java)
             startActivity(intent)
 
         }
@@ -80,6 +89,7 @@ class UserProfileActivity : AppCompatActivity() {
 
                 user = snapshot.getValue(Users::class.java)!!
                 binding.dispUser.setText(user.username)
+                getUserProfile()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -87,6 +97,18 @@ class UserProfileActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun getUserProfile() {
+        storageReference = FirebaseStorage.getInstance().reference.child("users/${auth.currentUser?.uid}/profile.jpg")
+
+        val localFile = File.createTempFile("tempImage","jpg")
+        storageReference.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+            binding.userProfile.setImageBitmap(bitmap)
+        }.addOnFailureListener{
+            Toast.makeText(this, "No Image", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun onError(){

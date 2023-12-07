@@ -2,6 +2,7 @@
     <string name="app_name">GakuMate</string>
     <string name="sign_in">Already Registered? , Sign In !</string>
     <string name="sign_up">Create an Account?, Sign Up</string>
+    <string name="forgot">Forgot Password</string>
     <string name="terms_conditions">I agree to the <u>Terms and Conditions</u></string>
     <string name="terms"><b>Terms and Conditions for GakuMate\n</b>
 
