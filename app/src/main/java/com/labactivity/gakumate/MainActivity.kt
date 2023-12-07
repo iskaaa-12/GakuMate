@@ -108,6 +108,9 @@ class MainActivity : AppCompatActivity() {
                 adapter.updateData(categories)
                 adapter.notifyDataSetChanged()
 
+                // Save the updated categories
+                databaseHelper.saveCategories(categories)
+
                 // Retrieve the selected category
                 val selectedCategory = data?.getStringExtra("selectedCategory")
 
